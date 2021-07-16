@@ -3,7 +3,7 @@ using System.IO;
 
 namespace DataStructurePrograms
 {
-    public class UnorderdList<T> where T:IComparable
+    public class UnorderdList<T> where T : IComparable
     {
         Node<T> head;
         public void UnorderdListOperation()
@@ -37,7 +37,7 @@ namespace DataStructurePrograms
             Display();
 
             //write contents from linked list to file
-            string resultText=returnString();
+            string resultText = returnString();
             File.WriteAllText(@"/Users/Akshal/Projects/DataStructurePrograms/DataStructurePrograms/ListUnorderdItems.txt", resultText);
             Console.WriteLine("\nFile Updated Successfully!!!!!! ");
         }
@@ -67,7 +67,7 @@ namespace DataStructurePrograms
                     prev = temp;
                     temp = temp.next;
                 }
-               
+
             }
 
         }
@@ -90,7 +90,7 @@ namespace DataStructurePrograms
         {
             Node<T> temp = this.head;
 
-            string finaltext = " ";
+            string finaltext = String.Empty;
             while (temp != null)
             {
                 if (temp.next != null)
@@ -125,6 +125,26 @@ namespace DataStructurePrograms
                 temp = temp.next;
             }
 
+        }
+        public void Sort()
+        {
+            Node<T> i;
+            Node<T> j;
+            T temp;
+            for (i = this.head; i != null; i = i.next)
+            {
+                for (j = i.next; j != null; j = j.next)
+                {
+
+                    if ((i.data).CompareTo(j.data) > 0)
+                    {
+                        temp = i.data;
+                        i.data = j.data;
+                        j.data = temp;
+                    }
+                }
+
+            }
         }
     }
 }
