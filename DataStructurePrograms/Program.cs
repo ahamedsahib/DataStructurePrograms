@@ -9,8 +9,10 @@ namespace DataStructurePrograms
             Console.WriteLine("Welcome to Data Structure Programs");
            // UnorderdList<string> unorderdList = new UnorderdList<string>();
             //unorderdList.UnorderdListOperation();
-            OrderdList<int> orderdList = new OrderdList<int>();
-            orderdList.OrderdListOperation();
+            //OrderdList<int> orderdList = new OrderdList<int>();
+            //orderdList.OrderdListOperation();
+            BankingCashCounter<string> cashCounter = new BankingCashCounter<string>();
+            cashCounter.CashCounter();
         }
     }
 }
