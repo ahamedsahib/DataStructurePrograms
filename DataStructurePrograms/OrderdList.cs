@@ -7,7 +7,7 @@ namespace DataStructurePrograms
     public class OrderdList<T> where T : IComparable
     {
         UnorderdList<T> unorderdList = new UnorderdList<T>();
-        Node<T> head;
+
         public void OrderdListOperation()
         {
             string text = File.ReadAllText(@"/Users/Akshal/Projects/DataStructurePrograms/DataStructurePrograms/OrderdListItems.txt");
@@ -51,7 +51,9 @@ namespace DataStructurePrograms
             File.WriteAllText(@"/Users/Akshal/Projects/DataStructurePrograms/DataStructurePrograms/OrderdListItems.txt", resultText);
             Console.WriteLine("\nFile Updated Successfully!!!!!! ");
         }
+   
 
-    
+
     }
+   
 }
