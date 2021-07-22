@@ -15,8 +15,11 @@ namespace DataStructurePrograms
             //cashCounter.CashCounter();
             //PalindromeChecker<string> palindromeChecker = new PalindromeChecker<string>();
             //palindromeChecker.CheckPalindrome();
-            HashSearch<int> hashSearch = new HashSearch<int>();
-            hashSearch.SearchNumber();
+            // HashSearch<int> hashSearch = new HashSearch<int>();
+            //hashSearch.SearchNumber();
+            PrimeNumberRange primeNumber = new PrimeNumberRange();
+            primeNumber.FindPrimeInRange();
+            primeNumber.Print();
         }
     }
 }
