@@ -110,7 +110,7 @@ namespace DataStructurePrograms
                 }
                 foreach (T val in linkedList)
                 {
-                    Console.WriteLine($"At {i} ---> {val}");
+                    Console.WriteLine($"Data Stored In Position {i} ---> {val}");
                     this.output += $" {val}";
                 }
 
