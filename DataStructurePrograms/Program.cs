@@ -11,8 +11,10 @@ namespace DataStructurePrograms
             //unorderdList.UnorderdListOperation();
             //OrderdList<int> orderdList = new OrderdList<int>();
             //orderdList.OrderdListOperation();
-            BankingCashCounter<string> cashCounter = new BankingCashCounter<string>();
-            cashCounter.CashCounter();
+            //BankingCashCounter<string> cashCounter = new BankingCashCounter<string>();
+            //cashCounter.CashCounter();
+            PalindromeChecker<string> palindromeChecker = new PalindromeChecker<string>();
+            palindromeChecker.CheckPalindrome();
         }
     }
 }
