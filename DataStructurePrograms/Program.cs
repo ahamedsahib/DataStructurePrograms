@@ -17,8 +17,10 @@ namespace DataStructurePrograms
             //palindromeChecker.CheckPalindrome();
             // HashSearch<int> hashSearch = new HashSearch<int>();
             //hashSearch.SearchNumber();
-            PrimeNumberRange<int> primeNumber = new PrimeNumberRange<int>();
-            primeNumber.FindPrimeInRange();
+            // PrimeNumberRange<int> primeNumber = new PrimeNumberRange<int>();
+            //primeNumber.FindPrimeInRange();
+            Calendar calendar = new Calendar();
+            calendar.FindCalendar();
             
         }
     }
