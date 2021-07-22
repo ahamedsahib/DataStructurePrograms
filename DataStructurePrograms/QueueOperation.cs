@@ -40,11 +40,11 @@ namespace DataStructurePrograms
 
             public void Display()
             {
-                Console.WriteLine("\n");
+                
                 Node<T> temp = this.front;
                 while (temp != null)
                 {
-                    Console.Write($"|__{temp.data}__|");
+                    Console.Write($"\n|__{temp.data}__|");
                     temp = temp.next;
                 }
             }

@@ -3,6 +3,7 @@ namespace DataStructurePrograms
 {
     public class PrimeNumberRange<T> where T:IComparable
     {
+        QueueOperation<T> queue = new QueueOperation<T>();
         public static int range = 0, index = 0;
         // 2d - Array for storing prime numbers 
         public T[,] primeNumbers = new T[10, 100];
@@ -35,9 +36,10 @@ namespace DataStructurePrograms
             FindAnagram();
             Console.WriteLine("Anagram numbers in range");
             Print(AnagramNumbers);
-            Console.WriteLine("Anagrams in reverse order");
-            DisplayList();
-
+            //Console.WriteLine("Anagrams in reverse order");
+            //DisplayList();
+            Console.WriteLine("Anagrams Using Queue");
+            queue.Display();
         }
 
         /// <summary>
@@ -87,8 +89,10 @@ namespace DataStructurePrograms
                         {
                             AnagramNumbers[i, index++] = primeNumbers[i, j];
                             AnagramNumbers[i, index++] = primeNumbers[i, k];
-                            Insert(primeNumbers[i, j]);
-                            Insert(primeNumbers[i, k]);
+                            //Insert(primeNumbers[i, j]);
+                            //Insert(primeNumbers[i, k]);
+                            queue.Enqueue(primeNumbers[i, j]);
+                            queue.Enqueue(primeNumbers[i, k]);
 
                         }
 
