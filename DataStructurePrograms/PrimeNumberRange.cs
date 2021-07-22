@@ -1,13 +1,14 @@
 ﻿using System;
 namespace DataStructurePrograms
 {
-    public class PrimeNumberRange
+    public class PrimeNumberRange<T> where T:IComparable
     {
         public static int range = 0, index = 0;
         // 2d - Array for storing prime numbers 
-        public int[,] primeNumbers = new int[10, 100];
-        public int[,] AnagramNumbers = new int[10, 100];
-        public int[,] notAnagramNumbers = new int[10, 100];
+        public T[,] primeNumbers = new T[10, 100];
+        public T[,] AnagramNumbers = new T[10, 100];
+        public T[,] notAnagramNumbers = new T[10, 100];
+        Node<T> top = null;
 
 
 
@@ -15,7 +16,6 @@ namespace DataStructurePrograms
         public void FindPrimeInRange()
         {
             int start = 0, end = 1000, count = 0;
-
             for (int i = start + 1; i <= end; i++)
             {
                 if (count > 100)
@@ -27,36 +27,34 @@ namespace DataStructurePrograms
 
                 if (FindPrime(i))
                 {
-                    primeNumbers[range, index] = i;
+                    primeNumbers[range, index] = (T)Convert.ChangeType(i, typeof(T));
                     index++;
                 }
                 count++;
             }
-            Console.WriteLine("Prime numbers in range");
-            Print(primeNumbers);
             FindAnagram();
             Console.WriteLine("Anagram numbers in range");
             Print(AnagramNumbers);
-            Console.WriteLine("Not Anagram numbers in range");
-            Print(notAnagramNumbers);
+            Console.WriteLine("Anagrams in reverse order");
+            DisplayList();
 
         }
 
         /// <summary>
         /// Print the ARRAY
         /// </summary>
-        public void Print(int[,] array)
+        public void Print(T[,] array)
         {
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 100; j++)
                 {
-                    if (array[i, j] != 0)
+                    if (array[i, j].CompareTo((T)Convert.ChangeType(0, typeof(T))) > 0)
                     {
                         Console.WriteLine(array[i, j]);
                     }
                 }
-                Console.WriteLine("***************************************************");
+                Console.WriteLine("***************************************");
             }
         }
         public void FindAnagram()
@@ -66,7 +64,7 @@ namespace DataStructurePrograms
             {
                 for (int j = 0; j < 100; j++)
                 {
-                    if (primeNumbers[i, j] != 0 && primeNumbers[i, j] > 10)
+                    if (primeNumbers[i, j].CompareTo((T)Convert.ChangeType(0, typeof(T))) > 0)
                     {
                         char[] charArr = primeNumbers[i, j].ToString().ToCharArray();
                         Array.Sort(charArr);
@@ -89,6 +87,8 @@ namespace DataStructurePrograms
                         {
                             AnagramNumbers[i, index++] = primeNumbers[i, j];
                             AnagramNumbers[i, index++] = primeNumbers[i, k];
+                            Insert(primeNumbers[i, j]);
+                            Insert(primeNumbers[i, k]);
 
                         }
 
@@ -102,13 +102,13 @@ namespace DataStructurePrograms
                 for (int j = 0; j < 100; j++)
                 {
                     flag = 0;
-                    if (primeNumbers[i, j] != 0)
+                    if (primeNumbers[i, j].CompareTo((T)Convert.ChangeType(0, typeof(T))) > 0)
                     {
                         for (int p = 0; p < 10 && flag != 1; p++)
                         {
                             for (int q = 0; q < 100; q++)
                             {
-                                if (primeNumbers[i, j] == AnagramNumbers[p, q])
+                                if (primeNumbers[i, j].CompareTo(AnagramNumbers[p, q]) == 0)
                                 {
                                     flag = 1;
                                     break;
@@ -159,6 +159,28 @@ namespace DataStructurePrograms
                 }
             }
             return isPrime;
+        }
+        public void Insert(T data)
+        {
+            Node<T> newNode = new Node<T>(data);
+            if (this.top == null)
+            {
+                newNode.next = null;
+            }
+            else
+            {
+                newNode.next = this.top;
+            }
+            this.top = newNode;
+        }
+        public void DisplayList()
+        {
+            Node<T> temp = this.top;
+            while (temp != null)
+            {
+                Console.WriteLine($"|__{temp.data}__|");
+                temp = temp.next;
+            }
         }
     }
 }
