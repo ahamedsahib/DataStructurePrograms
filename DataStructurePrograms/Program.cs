@@ -17,7 +17,7 @@ namespace DataStructurePrograms
             //palindromeChecker.CheckPalindrome();
             // HashSearch<int> hashSearch = new HashSearch<int>();
             //hashSearch.SearchNumber();
-            PrimeNumberRange primeNumber = new PrimeNumberRange();
+            PrimeNumberRange<int> primeNumber = new PrimeNumberRange<int>();
             primeNumber.FindPrimeInRange();
             
         }
