@@ -19,7 +19,7 @@ namespace DataStructurePrograms
             //hashSearch.SearchNumber();
             PrimeNumberRange primeNumber = new PrimeNumberRange();
             primeNumber.FindPrimeInRange();
-            primeNumber.Print();
+            
         }
     }
 }

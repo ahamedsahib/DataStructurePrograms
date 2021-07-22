@@ -6,8 +6,11 @@ namespace DataStructurePrograms
         public static int range = 0, index = 0;
         // 2d - Array for storing prime numbers 
         public int[,] primeNumbers = new int[10, 100];
+        public int[,] AnagramNumbers = new int[10, 100];
+        public int[,] notAnagramNumbers = new int[10, 100];
 
-       
+
+
         // Find prime in range
         public void FindPrimeInRange()
         {
@@ -29,30 +32,105 @@ namespace DataStructurePrograms
                 }
                 count++;
             }
+            Console.WriteLine("Prime numbers in range");
+            Print(primeNumbers);
+            FindAnagram();
+            Console.WriteLine("Anagram numbers in range");
+            Print(AnagramNumbers);
+            Console.WriteLine("Not Anagram numbers in range");
+            Print(notAnagramNumbers);
 
         }
 
         /// <summary>
         /// Print the ARRAY
         /// </summary>
-        public void Print()
+        public void Print(int[,] array)
         {
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 100; j++)
                 {
-                    if (primeNumbers[i, j] != 0)
+                    if (array[i, j] != 0)
                     {
-                        Console.WriteLine(primeNumbers[i, j]);
+                        Console.WriteLine(array[i, j]);
                     }
                 }
                 Console.WriteLine("***************************************************");
             }
         }
+        public void FindAnagram()
+        {
+            int index = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 100; j++)
+                {
+                    if (primeNumbers[i, j] != 0 && primeNumbers[i, j] > 10)
+                    {
+                        char[] charArr = primeNumbers[i, j].ToString().ToCharArray();
+                        Array.Sort(charArr);
+                        string str1 = new String(charArr);
+                        int firstNum = Convert.ToInt32(str1);
+                        int secondNum = 0;
+                        int k;
+                        for (k = j + 1; k < 100; k++)
+                        {
+                            char[] charArr1 = primeNumbers[i, k].ToString().ToCharArray();
+                            Array.Sort(charArr1);
+                            string str2 = new String(charArr1);
+                            secondNum = Convert.ToInt32(str2);
+                            if (firstNum == secondNum)
+                            {
+                                break;
+                            }
+                        }
+                        if (firstNum == secondNum)
+                        {
+                            AnagramNumbers[i, index++] = primeNumbers[i, j];
+                            AnagramNumbers[i, index++] = primeNumbers[i, k];
+
+                        }
+
+                    }
+                }
+
+            }
+            int flag;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 100; j++)
+                {
+                    flag = 0;
+                    if (primeNumbers[i, j] != 0)
+                    {
+                        for (int p = 0; p < 10 && flag != 1; p++)
+                        {
+                            for (int q = 0; q < 100; q++)
+                            {
+                                if (primeNumbers[i, j] == AnagramNumbers[p, q])
+                                {
+                                    flag = 1;
+                                    break;
+                                }
+                            }
+                        }
+                        if (flag == 0)
+                        {
+                            notAnagramNumbers[i, j] = primeNumbers[i, j];
+
+                        }
+                    }
+                }
+
+            }
+
+
+        }
         /// <summary>
         /// Find number whether prime or not
         /// </summary>
-        
+
         public bool FindPrime(int i)
         {
             bool isPrime = false;
