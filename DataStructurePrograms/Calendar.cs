@@ -16,7 +16,7 @@ namespace DataStructurePrograms
         {
             Console.Write("Enter the year? ");
             year = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Enter the month (January = 1, etc): ");
+            Console.Write("Enter the month (Jan=1,Feb=2 etc): ");
             month = Convert.ToInt32(Console.ReadLine());
             date = new DateTime(year, month, 1);
 
